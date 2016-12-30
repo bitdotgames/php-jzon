@@ -7,6 +7,8 @@ $str = <<<EOD
 ["foo", 
   "bar", 
  {meaning_of_life: 42, 
+#NOTE: no comma ahead
+#      and yes comments are supported!
    hey: "bar" 
   "thatscool": 1
   }

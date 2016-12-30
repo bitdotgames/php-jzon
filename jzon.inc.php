@@ -87,21 +87,20 @@ class jzonParser
 
   private function skip_whitespace()
   {
-    //while($this->c < $this->len)
-    //{
+    while($this->c < $this->len)
+    {
       while($this->c < $this->len && (ord($ch = $this->in[$this->c]) <= self::$ORD_SPACE || $ch == ','))
         ++$this->c;
 
-    //  // skip line comment.
-    //  if($this->c < $this->len && $this->in[$this->c] === '/' && $this->c+1 < $this->len && $this->in[$this->c+1] === '/')
-    //  {
-    //    ++$this->c;
-    //    while($this->c < $this->len && $this->in[$this->c] != "\n")
-    //      ++$this->c;
-    //  }
-    //  else
-    //    break;
-    //}
+      // skip line comment.
+      if($this->c < $this->len && $this->in[$this->c] === '#')
+      {
+        while($this->c < $this->len && $this->in[$this->c] != "\n")
+          ++$this->c;
+      }
+      else
+        break;
+    }
   }
 
   private function parse_object(&$out, $root_object)

@@ -160,20 +160,20 @@ int find_object_pair_insertion_index(JzonKeyValuePair** objects, unsigned size, 
 
 void skip_whitespace(const char** input)
 {
-	//while (current(input))
-	//{
+	while (current(input))
+	{
 		while (current(input) && (current(input) <= ' ' || current(input) == ','))
 			next(input);
 		
-	//	// Skip comment.
-	//	if (current(input) == '#')
-	//	{
-	//		while (current(input) && current(input) != '\n')
-	//			next(input);
-	//	}
-	//	else
-	//		break;
-	//}
+		// Skip comment.
+		if (current(input) == '#')
+		{
+			while (current(input) && current(input) != '\n')
+				next(input);
+		}
+		else
+			break;
+	}
 }
 
 char* parse_multiline_string(const char** input, JzonAllocator* allocator)
@@ -272,13 +272,11 @@ char* parse_keyname(const char** input, JzonAllocator* allocator)
 	while (current(input))
 	{
     char ch = current(input);
-    //zend_error(E_NOTICE, "CHAR: %c VS %c", ch, end_char);
 		if (ch == end_char)
     {
       char* end = (char*)*input;
       if (end_char == '"')
 		    next(input);
-      //zend_error(E_NOTICE, "KEY OK");
 			return copy_str(allocator, start, (unsigned)(end - start));
     }
     else if (ch <= ' ')
@@ -288,23 +286,7 @@ char* parse_keyname(const char** input, JzonAllocator* allocator)
 		next(input);
 	}
 
-  //zend_error(E_NOTICE, "NULL KEY");
 	return NULL;
-
-	//if (current(input) == '"')
-	//	return parse_string_internal(input, allocator);
-
-	//char* start = (char*)*input;
-
-	//while (current(input))
-	//{
-	//	if (current(input) == ':')
-	//		return copy_str(allocator, start, (unsigned)(*input - start));
-
-	//	next(input);
-	//}
-
-	//return NULL;
 }
 
 const char* parse_value(const char** input, JzonValue* output, JzonAllocator* allocator);
