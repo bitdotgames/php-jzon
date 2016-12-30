@@ -3,7 +3,16 @@ jzon_parse($str) - basic tests for jzon_parse
 --FILE--
 <?php
 include(dirname(__FILE__) . '/../jzon.inc.php');
-$str = '["foo", "bar", {meaning_of_life: 42, hey: "bar" "thatscool": 1}]';
+$str = <<<EOD
+["foo", 
+  "bar", 
+ {meaning_of_life: 42, 
+   hey: "bar" 
+  "thatscool": 1
+  }
+]
+EOD;
+
 var_dump(jzon_parse($str));
 ?>
 --EXPECT--
