@@ -2,7 +2,7 @@
 
 This is a small PHP library for parsing JZON documents. 
 
-This library has a pure PHP implementation as well as a blazing fast C extension. If a C extension is missing it gracefully fallbacks to PHP implementation.
+This library has a pure PHP implementation as well as a blazing fast C extension. If the C extension is missing it gracefully fallbacks to the PHP implementation.
 
 ## What is JZON? ##
 
@@ -81,5 +81,3 @@ array(3) {
 ## Credits ##
 
 C extension is based on a bit modified code from https://github.com/KarlZylinski/jzon-c repository.
-
-
