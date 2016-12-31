@@ -20,7 +20,7 @@ Human beings usually hate JSON and they have reasons for that:
 
 ### Quick Example ###
 
-Say, you have the following JZON document:
+Say, you have the following JZON file example.json:
 
 ```
 #!json
