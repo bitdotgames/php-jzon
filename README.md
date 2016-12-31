@@ -68,17 +68,23 @@ array(3) {
 }
 ```
 
-### How do I get set up? ###
+## How do I get set up? ##
+
+### PHP only version ###
 
 * Clone the repo
 
-* If for some reason you can't use an extension just include **jzon.inc.php** and use **jzon_parse($str)** function. Otherwise(recommended) see steps below:
+* Include **jzon.inc.php** and use **jzon_parse($str)** function
 
-   *   Follow the standard PHP extension installation procedure: **./configure && make && make install**
+### C extension(recommended) ###
 
-   *  Add **"extension=jzon.so"** line to your php.ini
+* Clone the repo
 
-   *  Now you can include **jzon.inc.php** and use **jzon_parse($str)** function
+*  Follow the standard PHP extension installation procedure: **./configure && make && make install**
+
+* Add **"extension=jzon.so"** line to your php.ini
+
+* Include **jzon.inc.php** and use **jzon_parse($str)** function
 
 ## Credits ##
 
