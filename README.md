@@ -8,15 +8,15 @@ This library has a pure PHP implementation and a *much* faster C version impleme
 
 JZON is a *superset* of JSON which is designed to be actively edited by *humans*. 
 
-Human beings usually hate JSON and they have reasons for that: 
+PHP JZON features: 
 
-*  they always forget about extra trailing commas
+*  no need to worry about trailing commas
 
-*  they like to add comments
+*  comments
 
-*  they wonder if array keys really need to be quoted with ""
+*  simple array keys don't need to be quoted with ""
 
-*  they also hate when PHP native parser doesn't reveal the exact place of the parsing error
+*  parsing errors are shown in a friendly manner 
 
 ### Quick Example ###
 
