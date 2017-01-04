@@ -2,25 +2,25 @@
 
 This is a small PHP library for parsing JZON documents. 
 
-This library has a pure PHP implementation as well as a blazing fast C extension. If the C extension is missing it gracefully fallbacks to the PHP implementation.
+This library has a pure PHP implementation and a *much* faster C version implemented as an extension. If the C extension is missing it gracefully fallbacks to the PHP implementation.
 
 ## What is JZON? ##
 
 JZON is a *superset* of JSON which is designed to be actively edited by *humans*. 
 
-Humans beings usually hate JSON and they have reasons for that: 
+PHP JZON features: 
 
-*  they always forget about extra trailing commas
+*  no need to worry about trailing commas
 
-*  they like to add comments
+*  comments
 
-*  they wonder if array keys really need to be quoted with ""
+*  simple array keys don't need to be quoted with ""
 
-*  they also hate when PHP native parser doesn't reveal the exact place of the parsing error
+*  parsing errors are shown in a friendly manner 
 
 ### Quick Example ###
 
-Say, you have the following JZON document:
+Say, you have the following JZON file example.json:
 
 ```
 #!json
@@ -68,15 +68,23 @@ array(3) {
 }
 ```
 
-### How do I get set up? ###
+## How do I get set up? ##
+
+### PHP only version ###
 
 * Clone the repo
 
-* Follow the standard PHP extension installation procedure: **./configure && make && make install**
+* Include **jzon.inc.php** and use **jzon_parse($str)** function
+
+### C extension(recommended) ###
+
+* Clone the repo
+
+*  Follow the standard PHP extension installation procedure: **./configure && make && make install**
 
 * Add **"extension=jzon.so"** line to your php.ini
 
-* Now you can include **jzon.inc.php** from the repository and use **jzon_parse($str)** function
+* Include **jzon.inc.php** and use **jzon_parse($str)** function
 
 ## Credits ##
 
