@@ -12,7 +12,7 @@ PHP JZON features:
 
 *  no need to worry about trailing commas
 
-*  comments
+*  one line comments starting with #
 
 *  simple array keys don't need to be quoted with ""
 
