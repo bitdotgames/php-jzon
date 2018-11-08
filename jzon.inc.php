@@ -1,5 +1,13 @@
 <?php
 
+if(!defined('JZON_VERSION'))
+{
+  define('JZON_VERSION', '0.0.2');
+  //NOTE: see php_jsoh.h
+  //      will be false if jzon extension is not loaded
+  define('JZON_EXT_VERSION', phpversion('jzon'));
+}
+
 function jzon_show_position($p, $in, $context_chars)
 {
   $pre = str_replace("\n", '', jzon_get_past_input($p, $in, $context_chars));
@@ -320,7 +328,7 @@ class jzonParser
 
 function jzon_parse($str)
 {
-  if(function_exists('jzon_parse_c'))
+  if(JZON_VERSION === JZON_EXT_VERSION)
   {
     list($ok, $err, $err_pos, $res) = jzon_parse_c($str);
     if(!$ok)
