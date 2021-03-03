@@ -80,7 +80,7 @@ array(3) {
 
 * Clone the repo
 
-*  Follow the standard PHP extension installation procedure: **./configure && make && make install**
+*  Follow the standard PHP extension installation procedure: **phpize && ./configure && make && make install**
 
 * Add **"extension=jzon.so"** line to your php.ini
 
