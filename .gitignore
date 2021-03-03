@@ -4,6 +4,7 @@ tags
 Makefile*
 ac*.m4
 config.*
+!config.w32
 *.o
 install-sh
 libtool

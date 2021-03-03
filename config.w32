@@ -1,0 +1,10 @@
+// vim: ft=javascript:
+
+ARG_ENABLE("jzon", "for jzon support", "no");
+
+if (PHP_JZON != "no") {
+	var sources = "jzon.c php_jzon.c";
+    EXTENSION("jzon", sources, true);
+    
+}
+
