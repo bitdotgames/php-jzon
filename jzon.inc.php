@@ -1,8 +1,8 @@
 <?php
 
-if(!defined('JZON_VERSION'))
+if(!defined('JZON_PHP_VERSION'))
 {
-  define('JZON_VERSION', '0.0.2');
+  define('JZON_PHP_VERSION', '0.0.3');
   //NOTE: see php_jsoh.h
   //      will be false if jzon extension is not loaded
   define('JZON_EXT_VERSION', phpversion('jzon'));
@@ -100,9 +100,10 @@ class jzonParser
       while($this->c < $this->len && (ord($ch = $this->in[$this->c]) <= self::$ORD_SPACE || $ch == ','))
         ++$this->c;
 
-      // skip line comment.
+      // skip comment.
       if($this->c < $this->len && $this->in[$this->c] === '#')
       {
+        ++$this->c;
         while($this->c < $this->len && $this->in[$this->c] != "\n")
           ++$this->c;
       }
@@ -214,7 +215,7 @@ class jzonParser
         return substr($this->in, $start, $end - $start);
       }
       else if(ord($c) <= self::$ORD_SPACE)
-        $this->_error("Bad key characters");
+        $this->_error("Found bad key character '$c' with ord=" . ord($c). " in position {$this->c}. HINT: if you ensure about file's syntax - check the file's encoding");
 
       ++$this->c;
     }
@@ -240,14 +241,16 @@ class jzonParser
     ++$this->c;
     $start = $this->c;
 
+    $prev = '';
     while($this->c < $this->len)
     {
-      if($this->in[$this->c] == '"')
+      if($this->in[$this->c] == '"' && $prev != '\\')
       {
         $end = $this->c;
         ++$this->c;
         return substr($this->in, $start, $end - $start);
       }
+      $prev = $this->in[$this->c];
       ++$this->c;
     }
 
@@ -328,7 +331,7 @@ class jzonParser
 
 function jzon_parse($str)
 {
-  if(JZON_VERSION === JZON_EXT_VERSION)
+  if(JZON_EXT_VERSION === JZON_PHP_VERSION)
   {
     list($ok, $err, $err_pos, $res) = jzon_parse_c($str);
     if(!$ok)

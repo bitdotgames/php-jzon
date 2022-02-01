@@ -25,11 +25,11 @@ array(3) {
   string(3) "bar"
   [2]=>
   array(3) {
-    ["thatscool"]=>
-    int(1)
     ["meaning_of_life"]=>
     int(42)
     ["hey"]=>
     string(3) "bar"
+    ["thatscool"]=>
+    int(1)
   }
 }
